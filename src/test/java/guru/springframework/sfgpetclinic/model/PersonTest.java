@@ -13,8 +13,8 @@ class PersonTest {
 
         //then
         assertAll("Test Props Set",
-                () -> assertEquals(person.getFirstName(), "Joe"),
-                () -> assertEquals(person.getLastName(), "Buck")
+                () -> assertEquals(person.getFirstName(), "Joe", "First Name Fail"),
+                () -> assertEquals(person.getLastName(), "Buck", "Last Name Fail")
         );
     }
 
