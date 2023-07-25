@@ -19,7 +19,7 @@ class OwnerSDJpaServiceTest {
     @Disabled
     @Test
     void findByLastName() {
-        Owner foundOwner = service.findByLastName("Buck");
+//        Owner foundOwner = service.findByLastName("Buck");
     }
 
     @Test
