@@ -13,7 +13,7 @@ class OwnerTest {
         owner.setCity("Key West");
         owner.setTelephone("12341234234");
 
-        assertAll("Properties Test"
+        assertAll("Properties Test",
             () -> assertAll("Person Properties",
                 () -> assertEquals("Joe", owner.getFirstName(), "First Name Fail"),
                 () -> assertEquals("Buck", owner.getLastName(), "Last Name Fail")),

@@ -10,7 +10,7 @@ class IndexControllerTest {
     IndexController controller;
     @BeforeEach
     void setUp() {
-        controller = new IndexController;
+        controller = new IndexController();
     }
 
     @Test
