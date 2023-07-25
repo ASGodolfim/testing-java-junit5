@@ -4,9 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.*;
 
 import java.time.Duration;
 
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
@@ -22,7 +25,7 @@ class IndexControllerTest {
     @Test
     void index() {
         assertEquals("index", controller.index(), "view error");
-
+        assertThat(controller.index()).isEqualTo("index");
     }
 
     @DisplayName("Test Exeption")
@@ -57,5 +60,31 @@ class IndexControllerTest {
     void testAssumptionTrueAssumpIsTrue() {
 
         assumeTrue("GURU".equalsIgnoreCase("GURU"));
+    }
+    @EnabledOnOs(OS.MAC)
+    @Test
+    void testMeOnMacOS() {
+    }
+
+    @EnabledOnOs(OS.WINDOWS)
+    @Test
+    void testMeOnWindows() {
+    }
+    @EnabledOnJre(JRE.JAVA_8)
+    @Test
+    void testMeOnJava8() {
+    }
+    @EnabledOnJre(JRE.JAVA_11)
+    @Test
+    void testMeOnJava11() {
+    }
+
+    @EnabledIfEnvironmentVariable(named = "USER", matches = "Arthur")
+    @Test
+    void testIfUserArthur() {
+    }
+    @EnabledIfEnvironmentVariable(named = "USER", matches = "Fred")
+    @Test
+    void testIfUserFred() {
     }
 }
