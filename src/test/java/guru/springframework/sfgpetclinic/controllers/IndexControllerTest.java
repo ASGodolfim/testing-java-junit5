@@ -23,6 +23,9 @@ class IndexControllerTest {
 
     @DisplayName("Test Exeption")
     @Test
-    void oupsHandler() {
+    void oopsHandler() {
+        assertThrows(ValueNotFoundExeption.class, () -> {
+            controller.oopsHandler();
+        });
     }
 }
