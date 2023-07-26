@@ -4,10 +4,9 @@ import guru.springframework.sfgpetclinic.ModelTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
+
+import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -65,5 +64,19 @@ class OwnerTest implements ModelTest {
     @CsvFileSource(resources = "/input.csv", numLinesToSkip = 1)
     void csvFromFileTest(String stateName, int val, int val2) {
         System.out.println(stateName + " = " + val + ":" + val2);
+    }
+
+    @DisplayName("Method Provider Test")
+    @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
+    @MethodSource("getargs")
+    void fromMethodTest(String stateName, int val, int val2) {
+        System.out.println(stateName + " = " + val + ":" + val2);
+    }
+
+    static Stream<Arguments> getargs(){
+        return Stream.of(
+                Arguments.of("FL", 1, 1),
+                Arguments.of("OH", 2, 2),
+                Arguments.of("MI", 3, 1));
     }
 }
